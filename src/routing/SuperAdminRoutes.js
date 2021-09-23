@@ -13,6 +13,7 @@ const PrivateAgentRoutes = ({
       render={(props) =>
         role === 'agent' ||
         role === 'admin' ||
+        role === 'visitor' ||
         (!isAuthenticated && !loading) ? (
           <Redirect to='/login' />
         ) : (

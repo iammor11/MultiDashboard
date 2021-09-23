@@ -13,6 +13,7 @@ const AgentRoutes = ({
       render={(props) =>
         role === 'admin' ||
         role === 'superAdmin' ||
+        role === 'visitor' ||
         (!isAuthenticated && !loading) ? (
           <Redirect to='/login' />
         ) : (

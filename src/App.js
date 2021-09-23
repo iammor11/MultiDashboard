@@ -1,8 +1,9 @@
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AgentRoutes from './routing/AgentRoutes';
 import AdminRoutes from './routing/AdminRoutes';
 import SuperAdminRoutes from './routing/SuperAdminRoutes';
 import PublicRoutes from './routing/PublicRoutes';
+import VisitorRoutes from './routing/VisitorRoutes';
 
 const App = ({ loading, token, role }) => {
   return (
@@ -33,6 +34,14 @@ const App = ({ loading, token, role }) => {
             role={role}
             component={SuperAdminRoutes}
           />
+          <VisitorRoutes
+            exact
+            path='/visitor'
+            loading={loading}
+            isAuthenticated={token}
+            role={role}
+            component={VisitorRoutes}
+          />
           <PublicRoutes
             exact
             path='/'
@@ -44,7 +53,11 @@ const App = ({ loading, token, role }) => {
                 ? 'admin'
                 : role === 'superAdmin'
                 ? 'superAdmin'
-                : ''
+                : role === 'agent'
+                ? 'agent'
+                : role === 'visitor'
+                ? 'visitor'
+                : 'public'
             }
           />
         </Switch>

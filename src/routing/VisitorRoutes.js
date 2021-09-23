@@ -1,6 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
 
-const AdminRoutes = ({
+const VisitorRoutes = ({
   component: Component,
   loading,
   isAuthenticated,
@@ -13,7 +13,7 @@ const AdminRoutes = ({
       render={(props) =>
         role === 'agent' ||
         role === 'superAdmin' ||
-        role === 'visitor' ||
+        role === 'admin' ||
         (!isAuthenticated && !loading) ? (
           <Redirect to='/login' />
         ) : (
@@ -24,4 +24,4 @@ const AdminRoutes = ({
   );
 };
 
-export default AdminRoutes;
+export default VisitorRoutes;
